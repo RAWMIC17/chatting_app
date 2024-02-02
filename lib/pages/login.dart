@@ -15,8 +15,12 @@ class _LoginPageState extends State<LoginPage> {
   double turns = 0.0;
   final _formkey = GlobalKey<FormState>();
   bool changebutton = false;
-  var image = Image.asset("lib/assets/header.png",);
-  double _size = 100;
+  var image = Image.asset(
+    "lib/assets/header.png",
+    height: 290,
+    width: 290,
+  );
+  double _size = 290;
 
   moveToHome(BuildContext context) async {
     if (_formkey.currentState!.validate()) {
@@ -33,25 +37,41 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Mycolors.creamcolor,
       body: Stack(
         children: [
           Container(
-            padding: EdgeInsets.only(top: 90, left: 33),
-            child: Image.asset("lib/assets/woman.png"),
+            padding: EdgeInsets.only(top: 82, left: 33),
+            child: Image.asset(
+              "lib/assets/woman.png",
+            ),
           ),
           Container(
-            padding: EdgeInsets.only(top: 60, left: 33),
+            padding: EdgeInsets.only(top: 98, left: 52),
+            child: AnimatedSize(
+              curve: Curves.fastEaseInToSlowEaseOut,
+              alignment: Alignment.center,
+              duration: Duration(microseconds: 600),
               child: AnimatedRotation(
+                curve: Curves.fastEaseInToSlowEaseOut,
+                alignment: Alignment.center,
                 turns: turns,
-                duration: Duration(seconds: 1),
+                duration: Duration(milliseconds: 600),
                 child: image,
               ),
-            
+            ),
           ),
+          /* Container(
+            child: AnimatedContainer(duration: Duration(seconds: 1),
+            alignment: Alignment.center,
+            child: image,
+            curve: Curves.easeIn,
+            height: _size=_size== 100 ?40:100,
+            width: _size=_size== 100 ?40:100,
+            ),
+          ),*/
           /*Transform.rotate(
             alignment: Alignment.center,
             angle: finalAngle,
@@ -87,10 +107,13 @@ class _LoginPageState extends State<LoginPage> {
             padding: EdgeInsets.only(top: 690, left: 22),
             child: ElevatedButton(
               onPressed: () {
-                setState(() => turns = turns == 0 ? -1 / 4:0);
+                setState(() {
+                  _size = _size == 290 ? 200 : 290;
+                });
+                setState(() => turns = turns == 0 ? -1 / 4 : 0);
                 showModalBottomSheet(
                     isScrollControlled: true,
-                    backgroundColor: Mycolors.creamcolor,
+                    backgroundColor: Mycolors.bottomsheetcolor,
                     showDragHandle: true,
                     enableDrag: true,
                     useSafeArea: true,
@@ -113,8 +136,9 @@ class _LoginPageState extends State<LoginPage> {
                               child: Column(
                                 children: [
                                   Container(
-                                    padding: EdgeInsets.only(right: 276),
-                                    height: 18,
+                                    padding:
+                                        EdgeInsets.only(right: 273, top: 3),
+                                    height: 23,
                                     child: "Username"
                                         .text
                                         .color(Mycolors.textcolor)
@@ -127,16 +151,16 @@ class _LoginPageState extends State<LoginPage> {
                                         vertical: 20, horizontal: 18),
                                     child: TextFormField(
                                       style: TextStyle(fontSize: 16),
-                                      autofocus: true,
+                                      //autofocus: true,
                                       textCapitalization:
                                           TextCapitalization.none,
                                       decoration: InputDecoration(
-                                        //enabledBorder: UnderlineInputBorder(borderSide: BorderSide.none),
-                                        filled: true,
-                                        fillColor: Mycolors.textboxcolor,
-                                        hintText: "Enter Username",
-                                        //labelText: "Username"
-                                      ),
+                                          filled: true,
+                                          border: InputBorder.none,
+                                          fillColor: Mycolors.textboxcolor,
+                                          hintText: "Enter Username",
+                                          hintStyle: TextStyle(
+                                              fontWeight: FontWeight.w300)),
                                       validator: (value) {
                                         if (value!.isEmpty) {
                                           return "Username can't be empty";
@@ -150,8 +174,8 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                   Container(
                                     padding:
-                                        EdgeInsets.only(right: 276, top: 8),
-                                    height: 25,
+                                        EdgeInsets.only(right: 273, top: 8),
+                                    height: 28,
                                     child: "Password"
                                         .text
                                         .color(Mycolors.textcolor)
@@ -164,15 +188,17 @@ class _LoginPageState extends State<LoginPage> {
                                         vertical: 20, horizontal: 18),
                                     child: TextFormField(
                                       style: TextStyle(fontSize: 16),
-                                      autofocus: true,
-                                      //textCapitalization: TextCapitalization.none,
+                                      //autofocus: true,
                                       obscureText: true,
                                       decoration: InputDecoration(
-                                        fillColor: Mycolors.textboxcolor,
-                                        filled: true,
-                                        hintText: "Enter Password",
-                                        //labelText: "Password"
-                                      ),
+                                          border: InputBorder.none,
+                                          fillColor: Mycolors.textboxcolor,
+                                          filled: true,
+                                          hintText: "Enter Password",
+                                          hintStyle: TextStyle(
+                                              fontWeight: FontWeight.w300)
+                                          //labelText: "Password"
+                                          ),
                                       validator: (value) {
                                         if (value!.isEmpty) {
                                           return "Password can't be empty";
@@ -203,6 +229,7 @@ class _LoginPageState extends State<LoginPage> {
                                           .xl
                                           .fontFamily('Mulish')
                                           .normal
+                                          .color(Vx.white)
                                           .wide
                                           .make(),
                                       style: ButtonStyle(
@@ -255,6 +282,7 @@ class _LoginPageState extends State<LoginPage> {
                   .fontFamily('Mulish')
                   .normal
                   .wide
+                  .color(Vx.white)
                   .make(),
             ),
           )
