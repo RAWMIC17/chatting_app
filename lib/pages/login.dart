@@ -52,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
             padding: EdgeInsets.only(top: 98, left: 52),
             child: AnimatedSize(
               curve: Curves.fastEaseInToSlowEaseOut,
-              alignment: Alignment.center,
+              //alignment: Alignment.center,
               duration: Duration(microseconds: 600),
               child: AnimatedRotation(
                 curve: Curves.fastEaseInToSlowEaseOut,
