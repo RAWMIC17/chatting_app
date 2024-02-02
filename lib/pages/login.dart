@@ -151,7 +151,7 @@ class _LoginPageState extends State<LoginPage> {
                                         vertical: 20, horizontal: 18),
                                     child: TextFormField(
                                       style: TextStyle(fontSize: 16),
-                                      //autofocus: true,
+                                      autofocus: true,
                                       textCapitalization:
                                           TextCapitalization.none,
                                       decoration: InputDecoration(
@@ -188,7 +188,7 @@ class _LoginPageState extends State<LoginPage> {
                                         vertical: 20, horizontal: 18),
                                     child: TextFormField(
                                       style: TextStyle(fontSize: 16),
-                                      //autofocus: true,
+                                      autofocus: true,
                                       obscureText: true,
                                       decoration: InputDecoration(
                                           border: InputBorder.none,
